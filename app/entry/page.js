@@ -1,9 +1,9 @@
 'use client'
-// import EntryForm from "@/components/EntryForm";
+
 import LoginFramer from '@/components/LoginFramer'
-import { useSession } from 'next-auth/react';
+import { signIn, useSession } from 'next-auth/react';
 import Loading from '@/components/Loading';
-// import Alert from "@/components/Alert";
+
 
 const EntryPage = () => {
   const { status } = useSession()
@@ -12,8 +12,10 @@ const EntryPage = () => {
     return <Loading />
   }
   return<>
-    {/* <Alert /> */}
+   
     <LoginFramer/>
+<p>or</p>
+<button className="bg-red-400 p-4 rounded-full" onClick={(signIn)}>sign in</button>
   </>
 };
 

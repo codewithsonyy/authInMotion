@@ -3,13 +3,15 @@ const mongoose =require('mongoose');
 
 const connectToMongo=async()=>{
   try {
-    await mongoose.connect(process.env.MONGODB_URI,()=>{
-         console.log("Connected to Mongo Successfully");
-    
-      })
-  } catch (error) {
-    handleError(error);
+    await mongoose.connect(process.env.MONGODB_URI)
+  }catch (error) {
+    console.log(error)
   }
   
 }
-module.exports = connectToMongo;
+
+
+
+
+export default connectToMongo;
+

@@ -1,8 +1,8 @@
 import { verify, sign } from 'jsonwebtoken';
 
-const secretKey = process.env.SECRET_KEY;
+const secretKey = process.env.NEXTAUTH_SECRET;
 export const generateAccessToken = (user) => {
-  const token = sign({ sub: user._id }, secretKey, { expiresIn: '3d' });
+  const token = sign({ sub: user._id }, secretKey, { expiresIn: '6d' });
   return token;
 };
 

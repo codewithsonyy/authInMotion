@@ -1,17 +1,20 @@
 import NextAuth from "next-auth";
 import User from '@/db/models/User'
-import {  connectToMongo } from "@/db/dbConnect";
+
 import { generateAccessToken } from "@/utils/token";
+import bcrypt from 'bcryptjs';
 
 import GoogleProvider from "next-auth/providers/google";
 import GitHubProvider from "next-auth/providers/github";
+//import FacebookProvider from "next-auth/providers/facebook";
 import CredentialsProvider from "next-auth/providers/credentials";
+import connectToMongo from "@/db/dbConnect";
 export const authOptions= {
   session: {
     jwt: true,
     accessToken: true
   },
-  secret: process.env.SECRET_KEY,
+  secret: process.env.NEXTAUTH_SECRET,
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_ID,
@@ -21,6 +24,10 @@ export const authOptions= {
       clientId: process.env.GITHUB_ID ,
       clientSecret: process.env.GITHUB_SECRET ,
     }),
+    // FacebookProvider({
+    //   clientId: process.env.FACEBOOK_CLIENT_ID,
+    //   clientSecret: process.env.FACEBOOK_CLIENT_SECRET
+    // }),
     CredentialsProvider({
       name: "Sign in with Email",
       credentials: {
@@ -28,18 +35,23 @@ export const authOptions= {
         password: {label: "Password", type: "password"}
       },
       authorize: async (credentials) => {
-        connectToMongo()
+        await connectToMongo()
         const user = await User.findOne({email: credentials?.email}).select('+password')
         if(!user) { throw new Error('Invalid user')}
 
-        const pwValid = await user.comparePassword(credentials.password)
-        if(!pwValid){ throw new Error("Wrong password!") }
+        // const pwValid = await user.comparePassword(credentials.password)
+        const comparePass = await bcrypt.compare(credentials.password,user.password );
+
+        if(!comparePass){ throw new Error("Wrong password!") }
 
         return user;
       }
     }),
   ],
-  callbacks: {
+  pages:{
+    signIn:"/login"
+  },
+  callbacks: { 
     async jwt({ token, user }) {
       if (user) {
         token.user = {
@@ -60,9 +72,7 @@ export const authOptions= {
       return session
     },
   },
-  pages: {
-    signIn: '/entry',
-  },
+
 }
 
 const handler = NextAuth(authOptions);

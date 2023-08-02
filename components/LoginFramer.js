@@ -6,7 +6,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { staggerContainer } from "../utils/motion";
 import ExploreCard from './ExploreCard';
-import { Icons } from './Icons';
+// import { Icons } from './Icons';
 
 
 
@@ -24,11 +24,7 @@ const LoginFramer = () => {
        imgUrl: '/github.svg',
        providerauth: 'github',
      },
-     {
-      id: 'option-3',
-      imgUrl: '/tick.png',
-      providerauth: 'facebook ',
-    },
+    
     
      {
       id: 'option-4',
