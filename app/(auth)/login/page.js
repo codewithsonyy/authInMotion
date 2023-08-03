@@ -11,7 +11,7 @@ import { useRouter } from "next/navigation";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
- 
+
   const router = useRouter();
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -34,74 +34,77 @@ const Login = () => {
 
       console.log(data);
 
-      if(data?.error==null){
-        router.push("/profile")
+      if (data?.error == null) {
+        router.push("/profile");
+      } else {
+        toast.error("Error occured while login");
       }
-      else{
-        toast.error("Error occured while login")
-      }
-      
     } catch (error) {
       console.log(error);
     }
   };
 
   return (
-    <div>
-     
+    
+    <section className="h-fit">
+      <div className="h-full mt-8 p-8 rounded-md">
+        <div className="g-6 flex h-full flex-wrap items-center justify-center lg:justify-between">
+          <div className="shrink-1 mb-12 grow-0 basis-auto md:mb-0 md:w-9/12 md:shrink-0 lg:w-6/12 xl:w-6/12">
+            <img
+              src="https://tecdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+              className="w-full"
+              alt="Sample image"
+            />
+          </div>
 
-      <div className="container container-fluid">
-        <div className="row mt-5 d-flex justify-content-center">
-          <div className="col-10 col-lg-5 ">
-            <form
-              className="border border-secondary rounded p-4"
-              onSubmit={submitHandler}
-            >
-              <h1 className="mb-4">Login</h1>
-              <div className="form-outline mb-4">
-                <label className="form-label" htmlFor="email_field">
+          <div className="mb-12 md:mb-0 md:w-8/12 lg:w-5/12 xl:w-5/12">
+            <form onSubmit={submitHandler}>
+              <div className="relative mb-6">
+                <label className="">
                   Email address
                 </label>
                 <input
+                  className="peer block min-h-[auto] w-full rounded  bg-white px-3 py-[0.32rem] leading-[2.15] outline-none"
                   type="email"
                   id="email_field"
-                  className="form-control"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
 
-              <div className="form-outline mb-4">
-                <label className="form-label" htmlFor="password_field">
+              <div className="relative mb-6">
+                <label  className="">
                   Password
                 </label>
                 <input
                   type="password"
-                  id="password_field"
-                  className="form-control"
+                  className="peer block min-h-[auto] w-full rounded  bg-white px-3 py-[0.32rem] leading-[2.15] outline-none"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
 
-              <button
-                type="submit"
-                className="btn btn-block w-100 btn-primary btn-block mb-4"
-              >
-                Sign in
-              </button>
+              <div className="text-center lg:text-left">
+                <button
+                  className="inline-block rounded shadow-md bg-slate-900 hover:bg-[#2ff9c6] hover:text-black px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal text-white  focus:outline-none"
+                  type="submit"
+                >
+                  Sign in
+                </button>
 
-              <div className="text-center">
-                <p>
-                  Dont have an account? <Link href="/register">Register Now</Link>
+                <p className="mb-0 mt-2 pt-1 text-sm font-semibold">
+                  Dont have an account?{" "}
+                  <Link href="/register">
+                    <span className=" text-green-400 ">Register Now</span>
+                  </Link>
                 </p>
               </div>
             </form>
+            <ToastContainer />
           </div>
         </div>
-        <ToastContainer />
       </div>
-    </div>
+    </section>
   );
 };
 

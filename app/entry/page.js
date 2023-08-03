@@ -14,9 +14,8 @@ const EntryPage = () => {
   return<>
    
     <LoginFramer/>
-<p>or</p>
-<button className="bg-red-400 p-4 rounded-full" onClick={(signIn)}>sign in</button>
-  </>
+
+ </>
 };
 
 export default EntryPage;

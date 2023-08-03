@@ -6,6 +6,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { staggerContainer } from "../utils/motion";
 import ExploreCard from './ExploreCard';
+import { signIn } from 'next-auth/react';
 // import { Icons } from './Icons';
 
 
@@ -24,24 +25,29 @@ const LoginFramer = () => {
        imgUrl: '/github.svg',
        providerauth: 'github',
      },
+     {
+       id: 'option-3',
+       imgUrl: '/facebook.png',
+       providerauth: 'facebook',
+     },
     
     
      {
       id: 'option-4',
       imgUrl: '/email.png',
-      providerauth: 'credentials',
+      providerauth: '',
     }  
    ];
    return (
-     <section className="sm:p-16 xs:p-8 px-6  py-12" >
+     <section className="  md:mt-[50px] bg-emerald-300 rounded-full md:pt-8 py-8 hero-gradient shadow-black shadow-inner" >
        <motion.div
          variants={staggerContainer}
          initial="hidden"
          whileInView="show"
          viewport={{ once: false, amount: 0.25 }}
-         className="2xl:max-w-[1280px] w-2/3 mx-auto flex mt-28 flex-col"
-       >
-         <div className="mt-[50px] flex lg:flex-row flex-col min-h-[70vh]  gap-4">
+         className="2xl:max-w-[1280px] w-2/3 mx-auto flex  flex-col"
+       > 
+         <div className="flex md:flex-row md:justify-center md:items-center flex-col min-h-[50vh] gap-2  md:gap-4">
            {optionslogin.map((option, index) => (
              <ExploreCard 
              key={option.id}

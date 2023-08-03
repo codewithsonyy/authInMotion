@@ -13,7 +13,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className="bg-emerald-100 hero-gradientbody h-screen">
         <NextAuthProvider>
         <div className="max-w-3xl mx-auto ">
 

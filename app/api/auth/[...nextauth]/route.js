@@ -6,7 +6,7 @@ import bcrypt from 'bcryptjs';
 
 import GoogleProvider from "next-auth/providers/google";
 import GitHubProvider from "next-auth/providers/github";
-//import FacebookProvider from "next-auth/providers/facebook";
+import FacebookProvider from "next-auth/providers/facebook";
 import CredentialsProvider from "next-auth/providers/credentials";
 import connectToMongo from "@/db/dbConnect";
 export const authOptions= {
@@ -24,10 +24,10 @@ export const authOptions= {
       clientId: process.env.GITHUB_ID ,
       clientSecret: process.env.GITHUB_SECRET ,
     }),
-    // FacebookProvider({
-    //   clientId: process.env.FACEBOOK_CLIENT_ID,
-    //   clientSecret: process.env.FACEBOOK_CLIENT_SECRET
-    // }),
+    FacebookProvider({
+      clientId: process.env.FACEBOOK_ID,
+      clientSecret: process.env.FACEBOOK_SECRET
+    }),
     CredentialsProvider({
       name: "Sign in with Email",
       credentials: {
