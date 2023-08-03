@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
         <NextAuthProvider>
         <div className="max-w-3xl mx-auto ">
 
-        <Navbar />
+        
         {children}</div>
         </NextAuthProvider></body>
     </html>

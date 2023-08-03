@@ -3,6 +3,7 @@
 import LoginFramer from '@/components/LoginFramer'
 import { signIn, useSession } from 'next-auth/react';
 import Loading from '@/components/Loading';
+import Navbar from '@/components/Navbar';
 
 
 const EntryPage = () => {
@@ -12,7 +13,7 @@ const EntryPage = () => {
     return <Loading />
   }
   return<>
-   
+   <Navbar/>
     <LoginFramer/>
 
  </>
