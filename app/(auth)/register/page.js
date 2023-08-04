@@ -31,10 +31,17 @@ const Register = () => {
         },
         body: JSON.stringify({ username, email, password }),
       });
-      let res = await response.json();
-      console.log(res);
+      let res = await response;
+     
+      
+
+      
       if (res.ok) {
-        toast.success("Successfully registered the user");
+       
+        toast.success('Hello! you are successfully registered ');
+        setUserName("")
+        setEmail("")
+        setPassword("")
         setTimeout(() => {
           signIn();
         }, 1500);
@@ -55,7 +62,7 @@ const Register = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <form onSubmit={submitHandler}>
             <div>
-              <label className="block font-semibold" for="name">
+              <label className="block font-semibold"htmlFor="name" >
                 Username
               </label>
               <input
@@ -63,35 +70,35 @@ const Register = () => {
                 type="text"
                 name="username"
                 required="required"
-                value={username}
+                value={username ||''}
                 onChange={(e) => setUserName(e.target.value)}
-                autoFocus="autofocus"
+                
               />
             </div>
 
             <div className="mt-4">
-              <label className="block font-semibold" for="email">
+              <label className="block font-semibold" htmlFor="email ">
                 Email
               </label>
               <input
                 className=" shadow-inner bg-white rounded-lg placeholder-black text-2xl p-4 border-none block mt-1 w-full"
                 type="email"
                 name="email"
-                value={email}
+                value={email || ''}
                 onChange={(e) => setEmail(e.target.value)}
                 required="required"
               />
             </div>
 
             <div className="mt-4">
-              <label className="block font-semibold" for="password">
+              <label className="block font-semibold" htmlFor="password">
                 Password
               </label>
               <input
                 className=" shadow-inner bg-white rounded-lg placeholder-black text-2xl p-4 border-none block mt-1 w-full"
                 type="password"
                 name="password"
-                value={password}
+                value={password || ''}
                 onChange={(e) => setPassword(e.target.value)}
                 required="required"
                

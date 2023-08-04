@@ -22,7 +22,7 @@ export async function POST(request) {
         const user = new User({username, email, password })
         await user.save()
 
-        return new Response(JSON.stringify(user), {status: 201})
+    return new Response(JSON.stringify(user), {ok:true})
     }catch(err){
         return new Response(JSON.stringify({ error: err.message }), {
             status: 500,

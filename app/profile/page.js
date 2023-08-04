@@ -1,11 +1,16 @@
 "use client"
+import Navbar from '@/components/Navbar'
 import Userinfo from '@/components/Userinfo'
+
 import React from 'react'
 
 const page = () => {
   return (
     <div>
-      <Userinfo/>
+     <Navbar/>
+            <Userinfo/>
+        
+      
     </div>
   )
 }

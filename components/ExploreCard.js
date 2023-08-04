@@ -1,5 +1,6 @@
 'use client';
 
+
 import { motion } from 'framer-motion';
 import { fadeIn } from '../utils/motion';
 import { signIn } from 'next-auth/react'
@@ -25,7 +26,7 @@ const ExploreCard = ({ id, imgUrl, providerauth, index, active, handleClick }) =
       </h3></div> 
      
     ) : (
-      <button onClick={()=>signIn(providerauth)} className="absolute text-white bottom-0 py-2 px-3 flex   justify-start w-full flex-col  glassmorphism rounded-full">
+      <button onClick={()=>signIn(providerauth,{callbackUrl:"/profile"})} className="absolute text-white bottom-0 py-2 px-3 flex  active:text-green-300 justify-start w-full flex-col  glassmorphism rounded-full">
         {providerauth?providerauth:"credentials"}
       </button>
     )}

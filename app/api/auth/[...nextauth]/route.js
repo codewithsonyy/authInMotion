@@ -52,13 +52,16 @@ export const authOptions= {
     signIn:"/login"
   },
   callbacks: { 
+    async redirect({ url, baseUrl }) {
+      return baseUrl},
+      
     async jwt({ token, user }) {
       if (user) {
         token.user = {
           _id: user._id,
           name: user.name,
           email: user.email,
-          role: user.role,
+          
         }
         token.accessToken = generateAccessToken(user)
       }

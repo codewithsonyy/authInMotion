@@ -35,9 +35,11 @@ const Login = () => {
       console.log(data);
 
       if (data?.error == null) {
+        setEmail("");
+        setPassword("");
         router.push("/profile");
       } else {
-        toast.error("Error occured while login");
+        toast.error("INvalid User! or Incorrect credentials");
       }
     } catch (error) {
       console.log(error);
@@ -67,7 +69,7 @@ const Login = () => {
                   className="peer block min-h-[auto] w-full rounded  bg-white px-3 py-[0.32rem] leading-[2.15] outline-none"
                   type="email"
                   id="email_field"
-                  value={email}
+                  value={email || ""}
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
@@ -79,7 +81,7 @@ const Login = () => {
                 <input
                   type="password"
                   className="peer block min-h-[auto] w-full rounded  bg-white px-3 py-[0.32rem] leading-[2.15] outline-none"
-                  value={password}
+                  value={password|| ""}
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>

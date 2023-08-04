@@ -6,7 +6,7 @@ const Loading = () => (
     <style jsx>{`
       .loader {
         border-width: 8px;
-        border-top-color: #6B7280;
+        border-top-color: #000000;
         border-right-color: #A78BFA;
         border-bottom-color: #10B981;
         border-left-color: #60A5FA;
@@ -24,7 +24,7 @@ const Loading = () => (
       }
 
       @keyframes colors {
-        0% {border-color: #A78BFA #10B981 #60A5FA #6B7280;}
+        0% {border-color: #A78BFA #10B981 #60A5FA #000000;}
         33% {border-color: #10B981 #60A5FA #6B7280 #A78BFA;}
         67% {border-color: #60A5FA #6B7280 #A78BFA #10B981;}
         100% {border-color: #A78BFA #10B981 #60A5FA #6B7280;}

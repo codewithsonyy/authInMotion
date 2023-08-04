@@ -5,7 +5,7 @@ const UserSchema = new Schema({
     username: {
       type: String,
       required: true,
-      unique: [true, "Username already exists"],
+      
     },
     email: {
       type: String,
@@ -17,7 +17,7 @@ const UserSchema = new Schema({
       type: String,
       required: true,
       minLength: [6, "Must be at least 6 characters long"],
-      select: false, //don't send password
+      select: false, 
     },
 
   },

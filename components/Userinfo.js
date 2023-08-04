@@ -2,36 +2,37 @@
 import React from 'react'
 
 import { signIn, useSession } from 'next-auth/react'
-import Image from 'next/image'
+
 import { motion } from "framer-motion"
 
 
 
 const Userinfo = () => {
+
   const {status,data:session}=useSession()
-  if(status==="authenticated"){
-     return  <motion.div
+  console.log(session)
+  if(status=="authenticated"){
+  return (
+    <div>
+       <motion.div
     whileInView={{ opacity: 1 }}
     whileHover={{ scale: 1.1 }}
     transition={{ duration: 0.5, type: 'tween' }}
-    className="app__profile-item"
+    className=""
    
-  >  <div className="shadow-xl rounded-md p-8 flex flex-col gap-3 bg-red-200">
-      <Image className='rounded-full' src={session?.user?.image} width={60} height={60}/>
-      <div>Name: <span className='font-bold'>{session?.user?.name}</span></div>
-      <div>Email: <span className='font-bold'>{session?.user?.email}</span></div>
-    </div>
-    </motion.div>
-    
-  }
-  else{
-   signIn()
-  }
-  return (
-    <div>
+  >  <div className="shadow-xl flex mt-36 rounded-md p-8  flex-col gap-3 bg-white">
+      <h1>Wow welcome to Your Profile!</h1>
+      <div>Name: <span className='font-bold'>{session.user.name}</span></div>
+      <div>Email: <span className='font-bold'>{session.user.email}</span></div>
+      <div>Accesstoken: <span className='font-bold'>********</span></div>
       
     </div>
-  )
+    </motion.div>
+    </div>
+  )}
+  else{
+    return signIn()
+  }
 }
 
 export default Userinfo

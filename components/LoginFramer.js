@@ -6,13 +6,14 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { staggerContainer } from "../utils/motion";
 import ExploreCard from './ExploreCard';
-import { signIn } from 'next-auth/react';
+
 // import { Icons } from './Icons';
 
 
 
 const LoginFramer = () => {
     const [active, setActive] = useState("");
+
 
     const optionslogin = [
      {
@@ -38,6 +39,9 @@ const LoginFramer = () => {
       providerauth: '',
     }  
    ];
+   
+  
+
    return (
      <section className="  md:mt-[50px] bg-emerald-300 rounded-full md:pt-8 py-8 hero-gradient shadow-black shadow-inner" >
        <motion.div
