@@ -1,4 +1,4 @@
-import Navbar from '@/components/Navbar'
+
 import './globals.css'
 import { Inter } from 'next/font/google'
 import { NextAuthProvider } from './Providers'
@@ -15,7 +15,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className="bg-emerald-100 hero-gradientbody h-screen">
         <NextAuthProvider>
-        <div className="max-w-3xl mx-auto ">
+        <div className="max-w-5xl mx-auto ">
 
         
         {children}</div>

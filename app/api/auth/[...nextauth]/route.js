@@ -39,7 +39,7 @@ export const authOptions= {
         const user = await User.findOne({email: credentials?.email}).select('+password')
         if(!user) { throw new Error('Invalid user')}
 
-        // const pwValid = await user.comparePassword(credentials.password)
+        
         const comparePass = await bcrypt.compare(credentials.password,user.password );
 
         if(!comparePass){ throw new Error("Wrong password!") }

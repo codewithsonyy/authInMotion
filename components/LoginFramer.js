@@ -43,7 +43,7 @@ const LoginFramer = () => {
   
 
    return (
-     <section className="  md:mt-[50px] bg-emerald-300 rounded-full md:pt-8 py-8 hero-gradient shadow-black shadow-inner" >
+     <section className=" mx-auto md:mt-[50px] w-4/5 rounded-full md:pt-8 py-8 hero-gradient shadow-black shadow-inner" >
        <motion.div
          variants={staggerContainer}
          initial="hidden"

@@ -26,7 +26,7 @@ const ExploreCard = ({ id, imgUrl, providerauth, index, active, handleClick }) =
       </h3></div> 
      
     ) : (
-      <button onClick={()=>signIn(providerauth,{callbackUrl:"/profile"})} className="absolute text-white bottom-0 py-2 px-3 flex  active:text-green-300 justify-start w-full flex-col  glassmorphism rounded-full">
+      <button onClick={()=>signIn(providerauth,{callbackUrl:"/profile"})} className="absolute text-white bottom-0 py-2 md:py-3 px-3 md:px-6 md:text-xl flex  active:text-green-300 justify-start w-full flex-col  glassmorphism rounded-full">
         {providerauth?providerauth:"credentials"}
       </button>
     )}

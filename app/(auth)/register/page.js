@@ -5,7 +5,6 @@ import { signIn } from "next-auth/react";
 import "react-toastify/dist/ReactToastify.css";
 
 import { ToastContainer, toast } from "react-toastify";
-import Link from "next/link";
 
 const Register = () => {
   const [username, setUserName] = useState("");
@@ -24,24 +23,19 @@ const Register = () => {
       toast.error("Password must be at least 6 characters");
     }
     try {
-      const response = await fetch("api/register", {
+      const res = await fetch("api/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ username, email, password }),
       });
-      let res = await response;
-     
-      
 
-      
       if (res.ok) {
-       
-        toast.success('Hello! you are successfully registered ');
-        setUserName("")
-        setEmail("")
-        setPassword("")
+        toast.success("Hello! you are successfully registered ");
+        setUserName("");
+        setEmail("");
+        setPassword("");
         setTimeout(() => {
           signIn();
         }, 1500);
@@ -62,7 +56,7 @@ const Register = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <form onSubmit={submitHandler}>
             <div>
-              <label className="block font-semibold"htmlFor="name" >
+              <label className="block font-semibold" htmlFor="name">
                 Username
               </label>
               <input
@@ -70,9 +64,8 @@ const Register = () => {
                 type="text"
                 name="username"
                 required="required"
-                value={username ||''}
+                value={username || ""}
                 onChange={(e) => setUserName(e.target.value)}
-                
               />
             </div>
 
@@ -84,7 +77,7 @@ const Register = () => {
                 className=" shadow-inner bg-white rounded-lg placeholder-black text-2xl p-4 border-none block mt-1 w-full"
                 type="email"
                 name="email"
-                value={email || ''}
+                value={email || ""}
                 onChange={(e) => setEmail(e.target.value)}
                 required="required"
               />
@@ -98,10 +91,9 @@ const Register = () => {
                 className=" shadow-inner bg-white rounded-lg placeholder-black text-2xl p-4 border-none block mt-1 w-full"
                 type="password"
                 name="password"
-                value={password || ''}
+                value={password || ""}
                 onChange={(e) => setPassword(e.target.value)}
                 required="required"
-               
               />
             </div>
 
@@ -112,11 +104,9 @@ const Register = () => {
               >
                 Submit
               </button>
-            
             </div>
           </form>
 
-         
           <ToastContainer />
         </div>
       </div>

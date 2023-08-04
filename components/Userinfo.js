@@ -20,7 +20,7 @@ const Userinfo = () => {
     transition={{ duration: 0.5, type: 'tween' }}
     className=""
    
-  >  <div className="shadow-xl flex mt-36 rounded-md p-8  flex-col gap-3 bg-white">
+  >  <div className="shadow-xl flex mt-10 rounded-full lg:mt-36   p-8  flex-col gap-3 ">
       <h1>Wow welcome to Your Profile!</h1>
       <div>Name: <span className='font-bold'>{session.user.name}</span></div>
       <div>Email: <span className='font-bold'>{session.user.email}</span></div>
