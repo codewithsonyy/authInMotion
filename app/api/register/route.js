@@ -13,14 +13,14 @@ export async function POST(request) {
     }
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const newUser = await User.create({
+    let user = await User.create({
       username,
       email,
       password: hashedPassword,
     });
 
-        const user = new User({username, email, password })
-        await user.save()
+        
+       
 
     return new Response(JSON.stringify(user), {ok:true})
     }catch(err){

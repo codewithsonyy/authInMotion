@@ -30,8 +30,9 @@ const Register = () => {
         },
         body: JSON.stringify({ username, email, password }),
       });
+      const resjson = await res.json()
 
-      if (res.ok) {
+      if (res?.ok) {
         toast.success("Hello! you are successfully registered ");
         setUserName("");
         setEmail("");
@@ -41,7 +42,14 @@ const Register = () => {
         }, 1500);
         return;
       } else {
-        toast.error(res.error);
+       
+        toast.error(resjson?.error);
+        setUserName("");
+        setEmail("");
+        setPassword("");
+        setTimeout(() => {
+          signIn();
+        }, 1500);
         return;
       }
     } catch (error) {
@@ -79,7 +87,7 @@ const Register = () => {
                 name="email"
                 value={email || ""}
                 onChange={(e) => setEmail(e.target.value)}
-                required="required"
+                
               />
             </div>
 
@@ -93,14 +101,14 @@ const Register = () => {
                 name="password"
                 value={password || ""}
                 onChange={(e) => setPassword(e.target.value)}
-                required="required"
+                
               />
             </div>
 
             <div className="flex items-center justify-between mt-8">
               <button
                 type="submit"
-                className="flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10"
+                className="flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 active:rounded-full md:py-4 md:text-lg md:px-10"
               >
                 Submit
               </button>

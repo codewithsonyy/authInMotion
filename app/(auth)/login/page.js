@@ -5,14 +5,17 @@ import React, { useState } from "react";
 import { signIn } from "next-auth/react";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
-// import AlertMe from "../../components/AlertMe";
-import { useRouter } from "next/navigation";
+
+import { useRouter, useSearchParams } from "next/navigation";
+
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get("callbackUrl") || "/profile";
   const submitHandler = async (e) => {
     e.preventDefault();
     if (password === "" || email === "") {
@@ -30,6 +33,7 @@ const Login = () => {
         redirect: false,
         email,
         password,
+        callbackUrl
       });
 
       console.log(data);
@@ -37,9 +41,10 @@ const Login = () => {
       if (data?.error == null) {
         setEmail("");
         setPassword("");
-        router.push("/profile");
+        router.push(callbackUrl);
       } else {
-        toast.error("INvalid User! or Incorrect credentials");
+       
+        toast.error("Incorrect credentials");
       }
     } catch (error) {
       console.log(error);
@@ -48,7 +53,7 @@ const Login = () => {
 
   return (
     
-    <section className="h-fit">
+    <section className="h-screen">
       <div className="h-full mt-8 p-8 rounded-md">
         <div className="g-6 flex h-full flex-wrap items-center justify-center lg:justify-between">
           <div className="shrink-1 mb-12 grow-0 basis-auto md:mb-0 md:w-9/12 md:shrink-0 lg:w-6/12 xl:w-6/12">
@@ -88,7 +93,7 @@ const Login = () => {
 
               <div className="text-center lg:text-left">
                 <button
-                  className="inline-block rounded shadow-md bg-slate-900 hover:bg-[#2ff9c6] hover:text-black px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal text-white  focus:outline-none"
+                  className="inline-block rounded shadow-md bg-slate-900 hover:bg-[#2ff9c6] active:bg-slate-900 active:text-[#2ff9c6] hover:text-black px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal text-white  focus:outline-none"
                   type="submit"
                 >
                   Sign in
@@ -97,7 +102,7 @@ const Login = () => {
                 <p className="mb-0 mt-2 pt-1 text-sm font-semibold">
                   Dont have an account?{" "}
                   <Link href="/register">
-                    <span className=" text-green-400 ">Register Now</span>
+                    <span className=" text-green-400 active:text-white ">Register Now</span>
                   </Link>
                 </p>
               </div>

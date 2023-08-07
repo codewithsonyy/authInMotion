@@ -1,9 +1,7 @@
 import NextAuth from "next-auth";
 import User from '@/db/models/User'
-
 import { generateAccessToken } from "@/utils/token";
 import bcrypt from 'bcryptjs';
-
 import GoogleProvider from "next-auth/providers/google";
 import GitHubProvider from "next-auth/providers/github";
 import FacebookProvider from "next-auth/providers/facebook";
@@ -52,8 +50,7 @@ export const authOptions= {
     signIn:"/login"
   },
   callbacks: { 
-    async redirect({ url, baseUrl }) {
-      return baseUrl},
+    
       
     async jwt({ token, user }) {
       if (user) {

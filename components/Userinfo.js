@@ -1,37 +1,25 @@
-"use client"
+
 import React from 'react'
+import { redirect } from 'next/navigation'
+import { getCurrentUser } from '@/utils/session'
 
-import { signIn, useSession } from 'next-auth/react'
+const Userinfo = async() => {
+  const user = await getCurrentUser();
 
-import { motion } from "framer-motion"
-
-
-
-const Userinfo = () => {
-
-  const {status,data:session}=useSession()
-  console.log(session)
-  if(status=="authenticated"){
+  if(user ){
   return (
-    <div>
-       <motion.div
-    whileInView={{ opacity: 1 }}
-    whileHover={{ scale: 1.1 }}
-    transition={{ duration: 0.5, type: 'tween' }}
-    className=""
-   
-  >  <div className="shadow-xl flex mt-10 rounded-full lg:mt-36   p-8  flex-col gap-3 ">
-      <h1>Wow welcome to Your Profile!</h1>
-      <div>Name: <span className='font-bold'>{session.user.name}</span></div>
-      <div>Email: <span className='font-bold'>{session.user.email}</span></div>
-      <div>Accesstoken: <span className='font-bold'>********</span></div>
+     <div className="shadow-xl flex mt-10 rounded-lg lg:mt-36 w-2/3 mx-auto  p-10  flex-col gap-3 ">
+      <h1 className='font-bold text-center'>Wow welcome to Your Profile!</h1>
+      <div>Name : <span className='font-bold mx-2'>{user.name || "fetch it from db"}</span></div>
+      <div>Email : <span className='font-bold mx-2'>{user.email || "tryagain!"}</span></div>
+      <div>Accesstoken : <span className='font-bold mx-2'>************</span></div>
       
     </div>
-    </motion.div>
-    </div>
+    
+    
   )}
   else{
-    return signIn()
+    return redirect("/entry")
   }
 }
 
