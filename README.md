@@ -1,6 +1,6 @@
 
 # AuthINMotion
-An authentication next.js 13 app router based app that you can use it as a starter template so feel free to fork, star and use!
+A next.js 13 router based authentication app that you can use it as a starter template (Feel free to fork, star and use) or if a better idea or any fix give a pull request!
 
 
 #### landing page
@@ -14,6 +14,6 @@ An authentication next.js 13 app router based app that you can use it as a start
 ![Login](https://i.ibb.co/JpTLCDW/Screenshot-212.png)
 
 
-#### It felt amazing while deploying on vercel :) yeahhh soni cheers! 
+#### It felt amazing while deploying on vercel :) 
 
-Thank you
+
