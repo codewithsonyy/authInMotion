@@ -1,15 +1,19 @@
 "use client";
 
 import React, { useState } from "react";
-import { signIn } from "next-auth/react";
+
 import "react-toastify/dist/ReactToastify.css";
 
 import { ToastContainer, toast } from "react-toastify";
+import {useRouter} from "next/navigation";
+
+import Link from "next/link";
 
 const Register = () => {
   const [username, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const router = useRouter();
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -38,7 +42,7 @@ const Register = () => {
         setEmail("");
         setPassword("");
         setTimeout(() => {
-          signIn();
+          router.replace("/login");
         }, 1500);
         return;
       } else {
@@ -47,9 +51,7 @@ const Register = () => {
         setUserName("");
         setEmail("");
         setPassword("");
-        setTimeout(() => {
-          signIn();
-        }, 1500);
+       
         return;
       }
     } catch (error) {
@@ -112,6 +114,7 @@ const Register = () => {
               >
                 Submit
               </button>
+              <h1>If user already exits&#x2192;<Link className="text-white font-bold active:text-black" href="/login"> Please Login</Link></h1>
             </div>
           </form>
 

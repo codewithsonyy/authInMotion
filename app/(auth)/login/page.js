@@ -39,6 +39,7 @@ const Login = () => {
       console.log(data);
 
       if (data?.error == null) {
+        toast.success("Successfully signed In")
         setEmail("");
         setPassword("");
         router.push(callbackUrl);
